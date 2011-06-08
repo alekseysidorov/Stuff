@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<snippets>
+    <snippet group="Text" trigger="header" id="" complement="gpl" removed="false" modified="false">/****************************************************************************
+ *  $filename$
+ *
+ *  Copyright (c) $year$ by Sidorov Aleksey &lt;sauron@citadelspb.com&gt;
+ *
+ ***************************************************************************
+ *                                                                         *
+ *   This library is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ ***************************************************************************
+*****************************************************************************/
+
+</snippet>
+    <snippet group="Text" trigger="header" id="" complement="inruscom" removed="false" modified="false">/****************************************************************************
+ *  $file$.$cpp$
+ *
+ *  (c) LLC INRUSCOM, Russia
+ *
+*****************************************************************************/
+</snippet>
+    <snippet group="C++" trigger="cast" id="" complement="qobject" removed="false" modified="false">$Pointer$ $name$ = qobject_cast&lt;$Pointer$*&gt;($var$)</snippet>
+    <snippet group="C++" trigger="class" id="cpp_qobjectclass" complement="derived from QObject" removed="false" modified="true">class $name$ : public QObject
+{
+    Q_OBJECT
+public:
+    $name$() {}
+    virtual ~$name$() {}
+};</snippet>
+    <snippet group="C++" trigger="class" id="" complement="derived from QObject with pimpl" removed="false" modified="false">class $name$Private;
+class $name$ : public $QObject$
+{
+    Q_OBJECT
+    Q_DECLARE_PRIVATE($name$)
+public:
+    $name$();
+    virtual ~$name$();
+private:
+    QScopedPointer&lt;$name$Private&gt; d_ptr;
+};</snippet>
+    <snippet group="C++" trigger="class" id="cpp_qwidgetclass" complement="derived from QWidget" removed="false" modified="true">class $name$ : public QWidget
+{
+    Q_OBJECT
+public:
+    $name$() {}
+    virtual ~$name$() {}
+};</snippet>
+    <snippet group="C++" trigger="class" id="" complement="pimpl implementation" removed="false" modified="false">class $name$;
+class $name$Private
+{
+    Q_DECLARE_PUBLIC($name$)
+public:
+    $name$Private($name$ *q) : q_ptr(q) {}
+    $name$ *q_ptr;
+};
+</snippet>
+    <snippet group="C++" trigger="const" id="" complement="link" removed="false" modified="false">const $Type$ &amp;$name$</snippet>
+    <snippet group="C++" trigger="exec" id="" complement="with fatal error" removed="false" modified="false">if (!DataBaseManager::exec($query$))
+        fatal(QObject::tr(&quot;$error$&quot;));</snippet>
+    <snippet group="C++" trigger="getter" id="" complement="const" removed="false" modified="false">$type$ $name$() const;
+</snippet>
+    <snippet group="C++" trigger="getter" id="" complement="inline " removed="false" modified="false">$type$ $name$() const { return m_$name$; }</snippet>
+    <snippet group="C++" trigger="include" id="" complement="global" removed="false" modified="false">#include &lt;$file$&gt;</snippet>
+    <snippet group="C++" trigger="include" id="" complement="local" removed="false" modified="false">#include &quot;$file$&quot;</snippet>
+    <snippet group="C++" trigger="method" id="" complement="constructor pimpl" removed="false" modified="false">$class$::$class$() :
+    d_ptr(new $class$Private(this))
+{
+    
+}
+
+$class$::~$class$()
+{
+    
+}
+</snippet>
+    <snippet group="C++" trigger="namespace" id="cpp_namespace" complement="" removed="false" modified="true">namespace $name$ {
+
+} //namespace $name$</snippet>
+    <snippet group="C++" trigger="namespace" id="" complement="forward declare" removed="false" modified="false">namespace $name$ {
+class $className$;
+}</snippet>
+    <snippet group="C++" trigger="setter" id="" complement="" removed="false" modified="false">void set$name$($type$ $value$);
+</snippet>
+    <snippet group="C++" trigger="setter" id="" complement="const link" removed="false" modified="false">void set$name$(const $type$ &amp;$value$);
+</snippet>
+    <snippet group="C++" trigger="slot" id="" complement="private" removed="false" modified="false">Q_PRIVATE_SLOT(d_func(), $method$)</snippet>
+    <snippet group="C++" trigger="switch" id="" complement="" removed="false" modified="false">switch ($condition$) {
+    case $variant$:
+        break;
+    default:
+        break;
+}
+</snippet>
+    <snippet group="C++" trigger="typedef" id="" complement="list" removed="false" modified="false">typedef QList&lt;$container$&gt; $container$List;</snippet>
+    <snippet group="C++" trigger="typedef" id="" complement="list pointer" removed="false" modified="false">typedef QList&lt;$container$*&gt; $container$List;</snippet>
+</snippets>
+
