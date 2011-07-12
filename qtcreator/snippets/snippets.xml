@@ -61,6 +61,9 @@ public:
     <snippet group="C++" trigger="const" id="" complement="link" removed="false" modified="false">const $Type$ &amp;$name$</snippet>
     <snippet group="C++" trigger="exec" id="" complement="with fatal error" removed="false" modified="false">if (!DataBaseManager::exec($query$))
         fatal(QObject::tr(&quot;$error$&quot;));</snippet>
+    <snippet group="C++" trigger="for" id="" complement="const it" removed="false" modified="false">for ($it$ = $container$.constBegin(); $it$ != $container$.constEnd(); ++$it$) {
+    
+}</snippet>
     <snippet group="C++" trigger="getter" id="" complement="const" removed="false" modified="false">$type$ $name$() const;
 </snippet>
     <snippet group="C++" trigger="getter" id="" complement="inline " removed="false" modified="false">$type$ $name$() const { return m_$name$; }</snippet>
@@ -83,6 +86,9 @@ $class$::~$class$()
     <snippet group="C++" trigger="namespace" id="" complement="forward declare" removed="false" modified="false">namespace $name$ {
 class $className$;
 }</snippet>
+    <snippet group="C++" trigger="new" id="" complement="pointer" removed="false" modified="false">$Type$ *$name$ = new $Type$</snippet>
+    <snippet group="C++" trigger="query" id="" complement="" removed="false" modified="false">QSqlQuery $query$;
+$query$.prepare(&quot;$value$&quot;);</snippet>
     <snippet group="C++" trigger="setter" id="" complement="" removed="false" modified="false">void set$name$($type$ $value$);
 </snippet>
     <snippet group="C++" trigger="setter" id="" complement="const link" removed="false" modified="false">void set$name$(const $type$ &amp;$value$);
@@ -98,4 +104,3 @@ class $className$;
     <snippet group="C++" trigger="typedef" id="" complement="list" removed="false" modified="false">typedef QList&lt;$container$&gt; $container$List;</snippet>
     <snippet group="C++" trigger="typedef" id="" complement="list pointer" removed="false" modified="false">typedef QList&lt;$container$*&gt; $container$List;</snippet>
 </snippets>
-
