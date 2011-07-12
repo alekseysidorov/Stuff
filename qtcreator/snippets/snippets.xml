@@ -103,4 +103,5 @@ $query$.prepare(&quot;$value$&quot;);</snippet>
 </snippet>
     <snippet group="C++" trigger="typedef" id="" complement="list" removed="false" modified="false">typedef QList&lt;$container$&gt; $container$List;</snippet>
     <snippet group="C++" trigger="typedef" id="" complement="list pointer" removed="false" modified="false">typedef QList&lt;$container$*&gt; $container$List;</snippet>
+    <snippet group="C++" trigger="typedef" id="" complement="shared ptr" removed="false" modified="false">typedef QSharedPointer&lt;$Object$&gt; $Ptr$;</snippet>
 </snippets>
