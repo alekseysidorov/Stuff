@@ -23,7 +23,14 @@
  *
 *****************************************************************************/
 </snippet>
-    <snippet group="C++" trigger="cast" id="" complement="qobject" removed="false" modified="false">$Pointer$ $name$ = qobject_cast&lt;$Pointer$*&gt;($var$)</snippet>
+    <snippet group="C++" trigger="case" id="" complement="with break" removed="false" modified="false">case $condition$:
+    $body$;
+    break;</snippet>
+    <snippet group="C++" trigger="case" id="" complement="with break and brackets" removed="false" modified="false">case $condition$: {
+    $body$;
+    break;
+}</snippet>
+    <snippet group="C++" trigger="cast" id="" complement="qobject" removed="false" modified="false">$Pointer$ *$name$ = qobject_cast&lt;$Pointer$*&gt;($var$)</snippet>
     <snippet group="C++" trigger="class" id="cpp_qobjectclass" complement="derived from QObject" removed="false" modified="true">class $name$ : public QObject
 {
     Q_OBJECT
