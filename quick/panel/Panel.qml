@@ -21,6 +21,7 @@ Rectangle {
 		anchors.topMargin: 5
 
 		text: rect.title
+		elide: Text.ElideRight
 	}
 
 	Rectangle {
@@ -47,6 +48,10 @@ Rectangle {
 
 			Item {
 				id: body
+				z: -1
+
+				width: childrenRect.width
+				height: childrenRect.height
 			}
 		}
 	}
