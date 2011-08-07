@@ -1,16 +1,18 @@
 import QtQuick 1.1
+import QtDesktop 0.1
 
-Rectangle {
-	width: 360
-	height: 360
-	Text {
-		anchors.centerIn: parent
-		text: "Hello World"
+Row {
+	Panel {
+		title: "Прямоугольник"
+
+
 	}
-	MouseArea {
-		anchors.fill: parent
-		onClicked: {
-			Qt.quit();
+	Panel {
+		width: 300
+		title: "Вторая строчка"
+
+		Button {
+			text: "Кнопочка"
 		}
 	}
 }
