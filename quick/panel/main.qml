@@ -1,41 +1,102 @@
 import QtQuick 1.1
 import QtDesktop 0.1
 
-Row {
+Rectangle {
+	id: background
+	width: 1024
+	height: 600
 
-	spacing: 10
+	Grid {
+		anchors.fill: parent
+		anchors.margins: 5
 
-	Panel {
-		title: "Прямоугольник"
+		spacing: 10
 
-		Grid {
-			ToolButton {
-				text: "1"
+		ListModel {
+			id: model
+			ListElement {
+				name: "1"
 			}
-			ToolButton {
-				text: "2"
+			ListElement {
+				name: "2"
 			}
-			ToolButton {
-				text: "3"
+			ListElement {
+				name: "3"
 			}
-			ToolButton {
-				text: "4"
+			ListElement {
+				name: "4"
 			}
-			ToolButton {
-				text: "5"
+			ListElement {
+				name: "5"
 			}
-			ToolButton {
-				text: "6"
+			ListElement {
+				name: "6"
+			}
+			ListElement {
+				name: "7"
+			}
+			ListElement {
+				name: "8"
 			}
 		}
 
-	}
-	Panel {
-		width: 300
-		title: "Вторая строчка"
+		Panel {
+			width: 250
 
-		Button {
-			text: "Кнопочка"
+			ButtonRow {
+				anchors.fill: parent
+				spacing: 10
+
+				ToolButton {
+					text: "first"
+				}
+				ToolButton {
+					text: "second"
+				}
+				ToolButton {
+					text: "third"
+				}
+				ToolButton {
+					text: "fourteen"
+				}
+				ToolButton {
+					text: "fifteen"
+				}
+			}
+		}
+
+		Panel {
+			id: panel
+			width: 200
+			title: "Прямоугольник"
+
+			GridView {
+				id: grid
+
+				width: panel.width
+				height: panel.height
+
+				cellWidth: 48
+				cellHeight: 48
+
+				model: model
+				delegate: ToolButton {
+					text: name
+					checkable: true
+					checked: false
+				}
+			}
+
+		}
+
+		Panel {
+			width: 300
+			title: "Вторая строчка"
+
+			Button {
+				text: "Кнопочка"
+			}
 		}
 	}
+
 }

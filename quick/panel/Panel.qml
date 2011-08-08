@@ -6,7 +6,7 @@ Rectangle {
 	default property alias content: body.children
 
 	width: 100
-	height: 100
+	height: 150
 
 	border.color: "black"
 
@@ -42,13 +42,13 @@ Rectangle {
 			id: flickable
 
 			anchors.fill: bodyRect
+			clip: true
 
 			contentWidth: body.width
 			contentHeight: body.height
 
 			Item {
 				id: body
-				z: -1
 
 				width: childrenRect.width
 				height: childrenRect.height
