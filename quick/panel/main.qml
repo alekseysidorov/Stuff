@@ -6,118 +6,126 @@ Rectangle {
 	width: 1024
 	height: 600
 
-	Grid {
+	BorderImage {
+		id: border
+		source: "images/background-toolbar.png"
 		anchors.fill: parent
-		anchors.margins: 5
+		border.left: 5; border.top: 5
+		border.right: 5; border.bottom: 5
 
-		spacing: 10
+		Grid {
+			anchors.fill: parent
+			anchors.margins: 5
 
-		ListModel {
-			id: model
-			ListElement {
-				name: "1"
-				checked: true
-			}
-			ListElement {
-				name: "2"
-				checked: false
-			}
-			ListElement {
-				name: "3"
-				checked: false
-			}
-			ListElement {
-				name: "4"
-				checked: false
-			}
-			ListElement {
-				name: "5"
-				checked: false
-			}
-			ListElement {
-				name: "6"
-				checked: false
-			}
-			ListElement {
-				name: "7"
-				checked: false
-			}
-			ListElement {
-				name: "8"
-				checked: false
-			}
+			spacing: 10
 
-			function checkModel(currentIndex) {
-				console.log("model" + count);
-				for (var i = 0; i != count; i++) {
-					setProperty(1, "name", "foo");
-					//if (i != index)
-					//	model.setProperty(i, "name", false);
-					//else
-					//	model.setProperty(i, "name", true);
+			ListModel {
+				id: model
+				ListElement {
+					name: "1"
+					checked: true
 				}
-			}
-		}
-
-		Panel {
-			width: 250
-
-			ButtonRow {
-				anchors.fill: parent
-				spacing: 10
-
-				ToolButton {
-					text: "first"
+				ListElement {
+					name: "2"
+					checked: false
 				}
-				ToolButton {
-					text: "second"
+				ListElement {
+					name: "3"
+					checked: false
 				}
-				ToolButton {
-					text: "third"
+				ListElement {
+					name: "4"
+					checked: false
 				}
-				ToolButton {
-					text: "fourteen"
+				ListElement {
+					name: "5"
+					checked: false
 				}
-				ToolButton {
-					text: "fifteen"
+				ListElement {
+					name: "6"
+					checked: false
 				}
-			}
-		}
+				ListElement {
+					name: "7"
+					checked: false
+				}
+				ListElement {
+					name: "8"
+					checked: false
+				}
 
-		Panel {
-			id: panel
-			width: 200
-			title: "Прямоугольник"
-
-			GridView {
-				id: grid
-
-				width: panel.width
-				height: panel.height
-
-				cellWidth: 48
-				cellHeight: 48
-
-				model: model
-				delegate: ToolButton {
-					id: button
-					text: name
-					checkable: true
-					checked: checked
-					onCheckedChanged: {
-						model.checkModel(index);
+				function checkModel(currentIndex) {
+					console.log("model" + count);
+					for (var i = 0; i != count; i++) {
+						setProperty(1, "name", "foo");
+						//if (i != index)
+						//	model.setProperty(i, "name", false);
+						//else
+						//	model.setProperty(i, "name", true);
 					}
 				}
 			}
 
-		}
+			Panel {
+				width: 250
 
-		Panel {
-			width: 300
-			title: "Вторая строчка"
+				ButtonRow {
+					anchors.fill: parent
+					spacing: 10
 
-			Button {
-				text: "Кнопочка"
+					ToolButton {
+						text: "first"
+					}
+					ToolButton {
+						text: "second"
+					}
+					ToolButton {
+						text: "third"
+					}
+					ToolButton {
+						text: "fourteen"
+					}
+					ToolButton {
+						text: "fifteen"
+					}
+				}
+			}
+
+			Panel {
+				id: panel
+				width: 200
+				title: "Прямоугольник"
+
+				GridView {
+					id: grid
+
+					width: panel.width
+					height: panel.height
+
+					cellWidth: 48
+					cellHeight: 48
+
+					model: model
+					delegate: ToolButton {
+						id: button
+						text: name
+						checkable: true
+						checked: checked
+						onCheckedChanged: {
+							model.checkModel(index);
+						}
+					}
+				}
+
+			}
+
+			Panel {
+				width: 300
+				title: "Вторая строчка"
+
+				Button {
+					text: "Кнопочка"
+				}
 			}
 		}
 	}

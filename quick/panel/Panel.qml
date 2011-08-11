@@ -1,6 +1,6 @@
 import QtQuick 1.1
 
-Rectangle {
+Item {
 	id: panel
 
 	property string title: "header"
@@ -11,8 +11,6 @@ Rectangle {
 
 	width: 100
 	height: 150
-
-	border.color: "black"
 
 	Text {
 		id: header
@@ -26,7 +24,10 @@ Rectangle {
 		anchors.topMargin: 5
 
 		text: panel.title
+
 		elide: Text.ElideRight
+		style: Text.Raised
+		styleColor: "white"
 	}
 
 	Rectangle {
@@ -42,6 +43,7 @@ Rectangle {
 		anchors.topMargin: 5
 
 		border.color: "gray"
+		color: "transparent"
 
 		Flickable {
 			id: flickable
