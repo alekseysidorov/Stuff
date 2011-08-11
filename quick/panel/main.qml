@@ -53,17 +53,6 @@ Rectangle {
 					name: "8"
 					checked: false
 				}
-
-				function checkModel(currentIndex) {
-					console.log("model" + count);
-					for (var i = 0; i != count; i++) {
-						setProperty(1, "name", "foo");
-						//if (i != index)
-						//	model.setProperty(i, "name", false);
-						//else
-						//	model.setProperty(i, "name", true);
-					}
-				}
 			}
 
 			Panel {
@@ -102,11 +91,13 @@ Rectangle {
 					width: panel.width
 					height: panel.height
 
-					cellWidth: 48
-					cellHeight: 48
+					cellWidth: 24
+					cellHeight: 24
 
 					model: model
-					delegate: ToolButton {
+					delegate: PanelButton {
+					}
+						/*ToolButton {
 						id: button
 						text: name
 						checkable: true
@@ -114,7 +105,7 @@ Rectangle {
 						onCheckedChanged: {
 							model.checkModel(index);
 						}
-					}
+					}*/
 				}
 
 			}

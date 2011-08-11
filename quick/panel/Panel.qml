@@ -16,6 +16,9 @@ Item {
 		id: header
 		z: 1
 
+		horizontalAlignment: Text.Center
+		verticalAlignment: Text.Center
+
 		anchors.right: parent.right
 		anchors.rightMargin: 5
 		anchors.left: parent.left
@@ -26,8 +29,8 @@ Item {
 		text: panel.title
 
 		elide: Text.ElideRight
-		style: Text.Raised
-		styleColor: "white"
+		style: Text.Outline
+		styleColor: "#CCC"
 	}
 
 	Rectangle {
