@@ -1,8 +1,12 @@
 import QtQuick 1.1
 
 Rectangle {
-	id: rect
+	id: panel
+
 	property string title: "header"
+	property bool expanded: true
+	property int duration: 300
+
 	default property alias content: body.children
 
 	width: 100
@@ -12,6 +16,7 @@ Rectangle {
 
 	Text {
 		id: header
+		z: 1
 
 		anchors.right: parent.right
 		anchors.rightMargin: 5
@@ -20,7 +25,7 @@ Rectangle {
 		anchors.top: parent.top
 		anchors.topMargin: 5
 
-		text: rect.title
+		text: panel.title
 		elide: Text.ElideRight
 	}
 
@@ -56,5 +61,55 @@ Rectangle {
 		}
 	}
 
+	MouseArea {
+		id: mouseArea
+		anchors.fill: header
+		onClicked: {
+			panel.expanded = !panel.expanded;
+			console.log("Panel: " + panel.state);
+		}
+	}
 
+	states: [
+		State {
+			name: "show"
+			when: panel.expanded
+			PropertyChanges {
+				target: bodyRect
+			}
+		},
+		State {
+			name: "hide"
+			when: !panel.expanded
+			PropertyChanges {
+				target: bodyRect
+				opacity: 0
+				height: 0
+			}
+
+			PropertyChanges {
+				target: panel
+
+				height: childrenRect.height
+
+			}
+
+			AnchorChanges {
+				target: bodyRect
+
+				anchors.right: parent.right
+				anchors.left: parent.left
+				anchors.top: undefined
+				anchors.bottom: header.top
+			}
+		}
+	]
+
+	transitions: [
+		Transition {
+			PropertyAnimation { properties: "opacity, height, y"; easing.type: Easing.InOutQuad; duration: panel.duration; target: bodyRect }
+			PropertyAnimation { properties: "opacity, height, y"; easing.type: Easing.InOutQuad; duration: panel.duration; target: panel }
+			AnchorAnimation { duration: panel.duration;}
+		}
+	]
 }

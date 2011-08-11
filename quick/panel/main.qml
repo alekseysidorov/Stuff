@@ -16,27 +16,46 @@ Rectangle {
 			id: model
 			ListElement {
 				name: "1"
+				checked: true
 			}
 			ListElement {
 				name: "2"
+				checked: false
 			}
 			ListElement {
 				name: "3"
+				checked: false
 			}
 			ListElement {
 				name: "4"
+				checked: false
 			}
 			ListElement {
 				name: "5"
+				checked: false
 			}
 			ListElement {
 				name: "6"
+				checked: false
 			}
 			ListElement {
 				name: "7"
+				checked: false
 			}
 			ListElement {
 				name: "8"
+				checked: false
+			}
+
+			function checkModel(currentIndex) {
+				console.log("model" + count);
+				for (var i = 0; i != count; i++) {
+					setProperty(1, "name", "foo");
+					//if (i != index)
+					//	model.setProperty(i, "name", false);
+					//else
+					//	model.setProperty(i, "name", true);
+				}
 			}
 		}
 
@@ -81,9 +100,13 @@ Rectangle {
 
 				model: model
 				delegate: ToolButton {
+					id: button
 					text: name
 					checkable: true
-					checked: false
+					checked: checked
+					onCheckedChanged: {
+						model.checkModel(index);
+					}
 				}
 			}
 
