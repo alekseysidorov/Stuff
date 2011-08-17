@@ -1,144 +1,40 @@
-import QtQuick 1.1
-import QtDesktop 0.1
+import QtQuick 1.0
 
-Rectangle {
-	id: background
-	width: 1024
-	height: 600
+Item {
+	id: root
 
-	BorderImage {
-		id: border
-		source: "images/background-toolbar.png"
+	width: 600
+	height: 50
+
+	Flickable {
+		id: flickable
+		boundsBehavior: Flickable.DragOverBounds
+
 		anchors.fill: parent
-		border.left: 5; border.top: 5
-		border.right: 5; border.bottom: 5
 
-		//		Grid {
-		//			anchors.fill: parent
-		//			anchors.margins: 5
+		contentHeight: row.height
+		contentWidth: row.width
 
-		//			spacing: 10
-
-		//			ListModel {
-		//				id: model
-		//				ListElement {
-		//					name: "1"
-		//					checked: true
-		//				}
-		//				ListElement {
-		//					name: "2"
-		//					checked: false
-		//				}
-		//				ListElement {
-		//					name: "3"
-		//					checked: false
-		//				}
-		//				ListElement {
-		//					name: "4"
-		//					checked: false
-		//				}
-		//				ListElement {
-		//					name: "5"
-		//					checked: false
-		//				}
-		//				ListElement {
-		//					name: "6"
-		//					checked: false
-		//				}
-		//				ListElement {
-		//					name: "7"
-		//					checked: false
-		//				}
-		//				ListElement {
-		//					name: "8"
-		//					checked: false
-		//				}
-		//			}
-
-		//			Panel {
-		//				width: 250
-
-		//				ButtonRow {
-		//					anchors.fill: parent
-		//					spacing: 10
-
-		//					ToolButton {
-		//						text: "first"
-		//					}
-		//					ToolButton {
-		//						text: "second"
-		//					}
-		//					ToolButton {
-		//						text: "third"
-		//					}
-		//					ToolButton {
-		//						text: "fourteen"
-		//					}
-		//					ToolButton {
-		//						text: "fifteen"
-		//					}
-		//				}
-		//			}
-
-		//			Panel {
-		//				id: panel
-		//				width: 200
-		//				title: "Прямоугольник"
-
-		//				GridView {
-		//					id: grid
-
-		//					width: panel.width
-		//					height: panel.height
-
-		//					cellWidth: 24
-		//					cellHeight: 24
-
-		//					model: model
-		//					delegate: PanelButton {
-		//					}
-		//						/*ToolButton {
-		//						id: button
-		//						text: name
-		//						checkable: true
-		//						checked: checked
-		//						onCheckedChanged: {
-		//							model.checkModel(index);
-		//						}
-		//					}*/
-		//				}
-
-		//			}
-
-		//			Panel {
-		//				width: 300
-		//				title: "Вторая строчка"
-
-		//				Button {
-		//					text: "Кнопочка"
-		//				}
-		//			}
-		//		}
-
-		ListModel {
-			id: panelModel
-			ListElement {
-				group: "Группа"
+		Row {
+			id: row
+			Panel {
+				id: panel
 			}
-			ListElement {
-				group: "Вторая группа"
+			Panel {
+				id: panel2
 			}
-		}
-
-		PanelDelegate {
-			id: panelDelegate
-		}
-
-		ListView {
-			id: panelView
-			anchors.fill: parent
-			delegate: panelDelegate
 		}
 	}
 
+	Rectangle {
+		id: rectangle
+		width: 60
+		height: 50
+		color: "#ff0000"
+		radius: 25
+		anchors.right: parent.right
+		anchors.rightMargin: 5
+		anchors.verticalCenterOffset: 0
+		anchors.verticalCenter: parent.verticalCenter
+	}
 }

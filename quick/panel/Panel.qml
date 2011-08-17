@@ -1,120 +1,59 @@
-import QtQuick 1.1
+import QtQuick 1.0
 
 Item {
 	id: panel
 
-	property string title: "header"
-	property bool expanded: true
-	property int duration: 300
+	property QtObject actions: dummy
+	property string header: actions.group
 
-	default property alias content: body.children
+	width: childrenRect.width
+	height: childrenRect.height
 
-	width: 100
-	height: 150
+	GridView {
+		id: gridView
+
+		width: cellWidth * model.count
+		height: contentHeight
+
+		contentHeight: 32
+		snapMode: GridView.SnapToRow
+		keyNavigationWraps: true
+		cellWidth: 26
+		cellHeight: 26
+
+		model: ListModel {
+			ListElement {
+				header: "1"
+			}
+			ListElement {
+				header: "2"
+			}
+			ListElement {
+				header: "3"
+			}
+			ListElement {
+				header: "4"
+			}
+		}
+		delegate: Text {
+			text: header
+		}
+	}
 
 	Text {
 		id: header
-		z: 1
 
-		horizontalAlignment: Text.Center
-		verticalAlignment: Text.Center
-
-		anchors.right: parent.right
+		text: panel.header
+		anchors.right: gridView.right
 		anchors.rightMargin: 5
-		anchors.left: parent.left
+		anchors.left: gridView.left
 		anchors.leftMargin: 5
-		anchors.top: parent.top
+		anchors.top: gridView.bottom
 		anchors.topMargin: 5
-
-		text: panel.title
-
-		elide: Text.ElideRight
-		style: Text.Outline
-		styleColor: "#CCC"
 	}
 
-	Rectangle {
-		id: bodyRect
-
-		anchors.bottom: parent.bottom
-		anchors.bottomMargin: 5
-		anchors.right: parent.right
-		anchors.rightMargin: 5
-		anchors.left: parent.left
-		anchors.leftMargin: 5
-		anchors.top: header.bottom
-		anchors.topMargin: 5
-
-		border.color: "gray"
-		color: "transparent"
-
-		Flickable {
-			id: flickable
-
-			anchors.fill: bodyRect
-			clip: true
-
-			contentWidth: body.width
-			contentHeight: body.height
-
-			Item {
-				id: body
-
-				width: childrenRect.width
-				height: childrenRect.height
-			}
-		}
+	QtObject {
+		id: dummy
+		property string group: qsTr("Заголовок")
 	}
-
-	MouseArea {
-		id: mouseArea
-		anchors.fill: header
-		onClicked: {
-			panel.expanded = !panel.expanded;
-			console.log("Panel: " + panel.state);
-		}
-	}
-
-	states: [
-		State {
-			name: "show"
-			when: panel.expanded
-			PropertyChanges {
-				target: bodyRect
-			}
-		},
-		State {
-			name: "hide"
-			when: !panel.expanded
-			PropertyChanges {
-				target: bodyRect
-				opacity: 0
-				height: 0
-			}
-
-			PropertyChanges {
-				target: panel
-
-				height: childrenRect.height
-
-			}
-
-			AnchorChanges {
-				target: bodyRect
-
-				anchors.right: parent.right
-				anchors.left: parent.left
-				anchors.top: undefined
-				anchors.bottom: header.top
-			}
-		}
-	]
-
-	transitions: [
-		Transition {
-			PropertyAnimation { properties: "opacity, height, y"; easing.type: Easing.InOutQuad; duration: panel.duration; target: bodyRect }
-			PropertyAnimation { properties: "opacity, height, y"; easing.type: Easing.InOutQuad; duration: panel.duration; target: panel }
-			AnchorAnimation { duration: panel.duration;}
-		}
-	]
 }
