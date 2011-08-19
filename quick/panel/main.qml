@@ -1,40 +1,41 @@
 import QtQuick 1.0
+import QtDesktop 0.1
 
 Item {
-	id: root
+    id: root
 
-	width: 600
-	height: 50
+    width: 300
+    height: 400
 
-	Flickable {
-		id: flickable
-		boundsBehavior: Flickable.DragOverBounds
+    QStyleItem {
+        anchors.fill: parent
+        anchors.margins: 10
 
-		anchors.fill: parent
+        elementType: "frame"
 
-		contentHeight: row.height
-		contentWidth: row.width
+        MouseArea {
+            anchors.fill: parent
+            onClicked: {
+                console.log("trying to show popup");
+                menu.x = mouse.x;
+                menu.y = mouse.y;
+                menu.visible = true;
+                console.log("Success");
+            }
+        }
+    }
 
-		Row {
-			id: row
-			Panel {
-				id: panel
-			}
-			Panel {
-				id: panel2
-			}
-		}
-	}
+    ListModel {
+        id: menuItems
+        ListElement { text: "Banana"; color: "Yellow" }
+        ListElement { text: "Apple"; color: "Green" }
+        ListElement { text: "Coconut"; color: "Brown" }
+    }
+    Menu {
+        id: menu
 
-	Rectangle {
-		id: rectangle
-		width: 60
-		height: 50
-		color: "#ff0000"
-		radius: 25
-		anchors.right: parent.right
-		anchors.rightMargin: 5
-		anchors.verticalCenterOffset: 0
-		anchors.verticalCenter: parent.verticalCenter
-	}
+        model: menuItems
+        width: 200
+        onSelectedIndexChanged: console.debug(selectedText + ", " + menuItems.get(selectedIndex).color)
+    }
 }
