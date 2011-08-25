@@ -21,19 +21,8 @@ Rectangle {
 
 	PopupWidget {
 		id: popup
-		delegate: Text {
-			width: 200
-			height: 50
-			id: text
-			opacity: 1
-			text: "foo"
-			MouseArea {
-				anchors.fill: parent
-				onClicked: {
-					popup.hide();
-				}
-			}
-		}
+		delegate: PopupPanel {
 
+		}
 	}
 }
