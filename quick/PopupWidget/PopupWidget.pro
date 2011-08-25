@@ -38,7 +38,9 @@ CONFIG -= debug_and_release debug
 CONFIG += release
 
 HEADERS += \
-    popupwidget.h
+    popupwidget.h \
+    popupwidget_p.h
+
 
 
 

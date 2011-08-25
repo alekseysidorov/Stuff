@@ -4,7 +4,7 @@
 #include <QWeakPointer>
 
 class QDeclarativeItem;
-class QDeclarativeView;
+class PopupView;
 class PopupWidget : public QObject
 {
     Q_OBJECT
@@ -14,13 +14,15 @@ public:
 	void setDelegate(QDeclarativeItem *item);
 	QDeclarativeItem *delegate() const;
 
-	Q_INVOKABLE void show();
+	Q_INVOKABLE	void show();
 	Q_INVOKABLE void hide();
+	//int x() const;
+	//int y() const;
 signals:
 	void delegateChanged(QDeclarativeItem*);
 private:
 	QWeakPointer<QDeclarativeItem> m_item;
-	QDeclarativeView *m_view;
+	PopupView *m_view;
 };
 
 #endif // POPUPWIDGET_H

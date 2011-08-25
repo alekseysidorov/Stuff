@@ -1,19 +1,29 @@
 #include "popupwidget.h"
+#include "popupwidget_p.h"
 
-#include <QDeclarativeView>
 #include <QDeclarativeItem>
 #include <QDeclarativeContext>
+#include <QDebug>
 
 PopupWidget::PopupWidget(QObject *parent) :
 	QObject(parent),
-	m_view(new QDeclarativeView)
+	m_view(new PopupView)
 {
 }
 
-/*! показать всплывающее окно
+/*! показать всплывающее окно в координатах x и y, используя умное расположение
+  */
+//void PopupWidget::showPopup(int x, int y)
+//{
+//	m_view->move(x, y);
+//	show();
+//}
+
+/*! показать всплывающее окно (координаты нужно задавать через свойства x и y)
   */
 void PopupWidget::show()
 {
+	m_view->move(QCursor::pos());
 	m_view->show();
 }
 
@@ -29,10 +39,9 @@ void PopupWidget::hide()
 void PopupWidget::setDelegate(QDeclarativeItem *item)
 {
 	if (m_item) {
-		m_view->scene()->removeItem(m_item.data());
 	}
 	m_item = item;
-	m_view->scene()->addItem(item);
+	m_view->setItem(item);
 }
 
 /*! элемент для отображения
