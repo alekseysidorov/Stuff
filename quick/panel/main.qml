@@ -11,7 +11,7 @@ Item {
         anchors.fill: parent
         anchors.margins: 10
 
-        elementType: "frame"
+		elementType: "tabframe"
 
         MouseArea {
             anchors.fill: parent
